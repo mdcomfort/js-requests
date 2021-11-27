@@ -9,7 +9,7 @@
     Use querySelector to select that button and save it to a variable called sayHelloButton
 */
 
-const sayHelloButton = document.querySelector('#say-hello-button')
+const sayHelloButton = document.getElementById('say-hello-button')
 
 
 // PROBLEM 2
@@ -75,7 +75,10 @@ sayHelloButton.addEventListener('click', sayHello)
 */ 
 
 const ohMy = () => {
-    // YOUR CODE HERE
+    axios.get('http://localhost:3000/animals')
+    .then((res) => {
+        console.log(res.data)
+    })
 }
 
 document.getElementById('animals-button').addEventListener('click', ohMy)
@@ -95,8 +98,16 @@ document.getElementById('animals-button').addEventListener('click', ohMy)
 */
 
 const repeatMyParam = () => {
-    //YOUR CODE HERE
+    axios.get('http://localhost:3000/repeat/test')
+    .then((res) => {
+        let repeatText = document.getElementById('repeat-text')
+        repeatText.style.display = 'flex'
+        repeatText.textContent = res.data
+        console.log(repeatText.textContent)
+    })
 }
+
+document.getElementById('repeat-button').addEventListener('click', repeatMyParam)
 
 // PROBLEM 7
 /*
@@ -118,9 +129,14 @@ const repeatMyParam = () => {
     Outside of your new function, select the button with the id "query-button" and add a click event listener that calls your function.
 */
 
-// CODE HERE
+const makeQuery = () => {
+    axios.get('http://localhost:3000/query-test/?myquery=question')
+    .then((res) => {
+        console.log(res.data)
+    })
+}
 
-
+document.querySelector('#query-button').addEventListener('click', makeQuery)
 
 ////////////////
 //INTERMEDIATE//
