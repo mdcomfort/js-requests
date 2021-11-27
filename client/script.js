@@ -77,7 +77,12 @@ sayHelloButton.addEventListener('click', sayHello)
 const ohMy = () => {
     axios.get('http://localhost:3000/animals')
     .then((res) => {
-        console.log(res.data)
+        let data = res.data
+        for (let i = 0; i < data.length; i++) {
+            let newPara = document.createElement('p')
+            newPara.textContent = data[i]
+            document.querySelector('body').appendChild(newPara)
+        }
     })
 }
 
@@ -149,7 +154,8 @@ document.querySelector('#query-button').addEventListener('click', makeQuery)
     On each iteration of the loop, create a new p element. Set its textContent equal the string at the current index (i) and then append the new p element onto the document's body. 
 */
 
-// Code in the ohMy function in Problem 5
+// Code in the ohMy function in Problem 5 
+// Edited 5
 
 // PROBLEM 10 
 /*
@@ -162,6 +168,9 @@ document.querySelector('#query-button').addEventListener('click', makeQuery)
 
 // Edit code in Problem 8
 
+// 1: 'http://localhost:3000/query-test' - Error "You sent an empty query" "Cannot send headers after they are sent to client"
+
+// 2: 'http://localhost:3000/query-test/?myquery=question&secondquery=stillquestion' - Error "You sent more than 1 query" "Cannot send headers after they are sent to client"
 
 
 ////////////
