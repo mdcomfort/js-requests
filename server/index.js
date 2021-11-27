@@ -39,6 +39,7 @@ app.post('/food', (req, res) => {
     const { newFood } = req.body
     foods.push(newFood)
     res.status(200).send(foods)
+    // console.log(foods)
 })
 
 app.listen(port, () => {

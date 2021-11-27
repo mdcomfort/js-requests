@@ -208,12 +208,12 @@ const createFood = (event) => {
     axios.post('http://localhost:3000/food', body)
     .then((res) => {
         let data = res.data // an array
-        let foodList = document.createElement('li')
-        foodList.textContent = data
-        let foodListContainer = document.createElement('ul')
-        foodListContainer.style.display = 'block'
-        foodListContainer.appendChild(foodList)
-        document.querySelector('body').appendChild(foodListContainer)
+        // console.log(data)
+        let newList = document.createElement('ul')
+        let newListItem = document.createElement('li')
+        newList.appendChild(newListItem)
+        newListItem.textContent = data[data.length - 1]
+        document.querySelector('body').appendChild(newListItem)
         foodInput.value = ''
     })
 }
