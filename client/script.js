@@ -108,7 +108,7 @@ const repeatMyParam = () => {
         let repeatText = document.getElementById('repeat-text')
         repeatText.style.display = 'flex'
         repeatText.textContent = res.data
-        console.log(repeatText.textContent)
+        console.log(repeatText)
     })
 }
 
@@ -196,4 +196,19 @@ document.querySelector('#query-button').addEventListener('click', makeQuery)
     Based on what we did earlier to display this type of data, write code that will display the response in your HTML document. 
 */
 
-// CODE HERE 
+const createFood = (event) => {
+    event.preventDefault()
+
+    let foodInput = document.querySelector('input')
+    
+    let body = {
+        newFood: foodInput.value
+    }
+
+    axios.post('http://localhost:3000/food', body)
+    .then((res) => {
+        console.log(res.data)
+    })
+}
+
+document.querySelector('form').addEventListener('submit', createFood)
